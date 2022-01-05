@@ -35,7 +35,12 @@ class SigninViewController: UIViewController, UIImagePickerControllerDelegate, U
         passwordTextField.delegate = self
         
         imagePicker.delegate = self
-        imagePicker.sourceType = .camera
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            imagePicker.sourceType = .camera
+        }
+        else {
+            imagePicker.sourceType = .savedPhotosAlbum
+        }
         imagePicker.allowsEditing = false
     }
     
